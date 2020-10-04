@@ -1,0 +1,7 @@
+{
+  "name": "panamax-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
