@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ScreenSizeService } from './services/screen-size.service';
+import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationError, Event } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +13,35 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  url = '';
+  isDesktop: Observable<boolean> = this.screenSizeService.isDesktopView();
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private screenSizeService: ScreenSizeService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+          // Show loading indicator
+          this.url = event.url;
+      }
+
+      if (event instanceof NavigationEnd) {
+          // Hide loading indicator
+          this.url = event.urlAfterRedirects;
+      }
+
+      if (event instanceof NavigationError) {
+          // Hide loading indicator
+
+          // Present error to user
+
+      }
+    });
+
     this.initializeApp();
   }
 
@@ -22,6 +49,21 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.screenSizeService.onResize(this.platform.width());
     });
+
+    this.screenSizeService.isDesktopView().subscribe(isDesktop => {
+      if (isDesktop) {
+        console.log('URL:  ' + this.url);
+        this.router.navigateByUrl(this.url.replace('mobile', 'web'));
+      } else {
+        this.router.navigateByUrl(this.url.replace('web', 'mobile'));
+      }
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private onResize(event) {
+    this.screenSizeService.onResize(event.target.innerWidth);
   }
 }

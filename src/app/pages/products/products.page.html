@@ -1,0 +1,19 @@
+<ion-header *ngIf="!(isDesktop | async)">
+  <ion-toolbar>
+    <ion-title class="ion-text-uppercase">Panamax Mobile</ion-title>
+    <ion-thumbnail slot="primary">
+      <img src="assets/images/USF_Logo.png" style="padding: 8px">
+    </ion-thumbnail>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<app-header *ngIf="(isDesktop | async)"></app-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>Products</ion-list-header>
+    <ion-item routerLink="products/1">Product #1</ion-item>
+    <ion-item>Product #2</ion-item>
+  </ion-list>
+</ion-content>

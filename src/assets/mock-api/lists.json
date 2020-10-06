@@ -1,0 +1,12 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "name": "Test List 1"
+    },
+    {
+      "id": 2,
+      "name": "Test List 2"
+    }
+  ]
+}

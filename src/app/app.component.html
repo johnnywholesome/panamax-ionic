@@ -1,3 +1,6 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+  <div class="footer" *ngIf="(isDesktop | async)">
+    <span>US FOODS POC HYBRID APP</span>
+  </div>
 </ion-app>
