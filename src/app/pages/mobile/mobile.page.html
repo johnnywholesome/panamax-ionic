@@ -1,10 +1,9 @@
 <ion-router-outlet></ion-router-outlet>
-<ion-tabs>
+<ion-tabs *ngIf="!(isDesktop | async)">
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="lists">
       <ion-icon name="list"></ion-icon>
       <ion-label>Lists</ion-label>
-      <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
 
     <ion-tab-button tab="search">
