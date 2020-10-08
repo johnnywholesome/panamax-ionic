@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { Observable } from 'rxjs';
+import { List } from '../pages/lists/model/list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +18,11 @@ export class SocketService {
       this.socket.emit('leaveListsRoom');
   }
 
-  getListsChanges() {
+  getListsChanges(): Observable<List> {
     return this.socket.fromEvent('listsUpdated');
   }
 
-//   addComment(votingId, message) {
-//     this.socket.emit('comment', {
-//       voting: votingId,
-//       text: message,
-//       user: 123
-//     });
-//   }
-
-//   getChatMessages() {
-//     return this.socket.fromEvent('comment');
-//   }
+  getListCreated(): Observable<List> {
+    return this.socket.fromEvent('listCreated');
+  }
 }

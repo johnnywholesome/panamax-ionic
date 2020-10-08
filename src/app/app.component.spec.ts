@@ -6,6 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ScreenSizeService } from './services/screen-size.service';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
 
@@ -13,22 +16,25 @@ describe('AppComponent', () => {
   let splashScreenSpy;
   let platformReadySpy;
   let platformSpy;
+  let spy;
 
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
-    platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
-
+    platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy, width: 600 });
+    spy = spyOn(ScreenSizeService.prototype, 'isDesktopView').and.returnValue(of(true));
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
-        { provide: Platform, useValue: platformSpy },
-      ],
-    }).compileComponents();
+        { provide: Platform, useValue: platformSpy }
+      ]}).compileComponents();
   }));
 
   it('should create the app', () => {

@@ -1,0 +1,30 @@
+name: Github Actions Example
+
+on:
+    pull_request:
+    push:
+        branches:
+            - master
+            - develop
+
+jobs:
+    #name the job
+    build:
+        # Set the type of machine to run on
+        runs-on: ubuntu-latest
+
+        strategy:   
+            steps:
+                # Checks out a copy of your repository on the ubuntu-latest machine
+                - name: Checkout code
+                  uses: actions/checkout@v2
+                - name: Build iOS on Appflow
+                uses: ionic-team/appflow-build@0.0.1
+                with:  
+                token: ${{ secrets.APPFLOW_TOKEN }}
+                app-id: abcdef12
+                platform: iOS
+                build-type: ad-hoc
+                certificate: MyCertificate
+                environment: MyEnvironment
+                upload-artifact: iOS-Build.zip

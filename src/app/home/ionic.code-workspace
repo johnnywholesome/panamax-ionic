@@ -1,31 +1,10 @@
 {
     "folders": [
         {
-            "path": "../../../../ngrx-tuts/ngrx-course"
-        },
-        {
-            "path": "../../../../ionic-app"
-        },
-        {
-            "path": "../../../../ionicEverywhere"
-        },
-        {
             "path": "../../.."
         },
         {
-            "path": "../../../../ionic-tuts/voting-app"
-        },
-        {
-            "path": "../../../../panamax-app"
-        },
-        {
-            "path": "../../../../docker_tuts"
-        },
-        {
             "path": "../../../../panamax-experience-api"
-        },
-        {
-            "path": "../../../../nest-socket-api"
         }
     ]
 }

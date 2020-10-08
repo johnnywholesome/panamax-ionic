@@ -11,6 +11,9 @@
 <ion-content>
   <ion-list>
     <ion-list-header>Shopping Lists</ion-list-header>
+    <ion-item *ngFor="let list of (lists$ | async)" [routerLink]="[list.id, 'groups']" tappable>
+      {{ list?.name }}
+    </ion-item>
     <ion-item routerLink="1/groups" tappable>
       List 1
     </ion-item>

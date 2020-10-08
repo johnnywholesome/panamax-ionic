@@ -54,7 +54,6 @@ export class AppComponent {
 
     this.screenSizeService.isDesktopView().subscribe(isDesktop => {
       if (isDesktop) {
-        console.log('URL:  ' + this.url);
         this.router.navigateByUrl(this.url.replace('mobile', 'web'));
       } else {
         this.router.navigateByUrl(this.url.replace('web', 'mobile'));

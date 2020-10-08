@@ -8,7 +8,6 @@ const routes: Routes = [
   {
     path: '',
     component: ListsPage,
-    // UNCOMMENT TO FETCH DATA FROM API
     // resolve: {
     //   lists: ListsResolver
     // }
