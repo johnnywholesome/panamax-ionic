@@ -41,9 +41,5 @@ jobs:
           build-stack: macOS - 2020.09
           filename: dev-${{ github.workflow }}.ipa
           upload-artifact: iOS
-  
-  build-live-update:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
 
  
