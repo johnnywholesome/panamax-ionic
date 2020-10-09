@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ScreenSizeService } from './services/screen-size.service';
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd, NavigationError, Event } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private screenSizeService: ScreenSizeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private deploy: Deploy
   ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
@@ -59,10 +61,16 @@ export class AppComponent {
         this.router.navigateByUrl(this.url.replace('web', 'mobile'));
       }
     });
+
+    this.changeToDataChannel();
   }
 
   @HostListener('window:resize', ['$event'])
   private onResize(event) {
     this.screenSizeService.onResize(event.target.innerWidth);
+  }
+
+  async changeToDataChannel() {
+    await this.deploy.configure({channel: 'Developer'});
   }
 }
