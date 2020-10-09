@@ -20,6 +20,7 @@ import { EntityDataModule } from '@ngrx/data';
 import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 
 const socketConfig: SocketIoConfig = { url: environment.api, options: {}};
 
@@ -47,7 +48,8 @@ const socketConfig: SocketIoConfig = { url: environment.api, options: {}};
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Deploy
   ],
   bootstrap: [AppComponent]
 })

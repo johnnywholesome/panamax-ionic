@@ -10,10 +10,10 @@
 <app-header *ngIf="(isDesktop | async)"></app-header>
 <ion-content>
   <ion-list>
-    <ion-list-header>Shopping Lists Live Update</ion-list-header>
-    <ion-item *ngFor="let list of (lists$ | async)" [routerLink]="[list.id, 'groups']" tappable>
+    <ion-list-header>Shopping Lists Live Update Test</ion-list-header>
+    <!-- <ion-item *ngFor="let list of (lists$ | async)" [routerLink]="[list.id, 'groups']" tappable>
       {{ list?.name }}
-    </ion-item>
+    </ion-item> -->
     <ion-item routerLink="1/groups" tappable>
       List 1
     </ion-item>
