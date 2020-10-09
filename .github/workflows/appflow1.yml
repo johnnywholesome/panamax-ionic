@@ -34,10 +34,16 @@ jobs:
           token: ${{ secrets.IONIC_TOKEN }}
           app-id: 612354ef
           platform: iOS
-          build-type: ad-hoc
+          build-type: enterprise
           environment: dev
           native-config: dev
           certificate: US Foods Dev
           build-stack: macOS - 2020.09
           filename: dev-${{ github.workflow }}.ipa
           upload-artifact: iOS
+  
+  build-live-update:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+ 
