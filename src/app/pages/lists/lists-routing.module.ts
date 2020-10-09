@@ -7,7 +7,7 @@ import { ListsResolver } from './services/lists-resolver.service';
 const routes: Routes = [
   {
     path: '',
-    component: ListsPage,
+    component: ListsPage
     // resolve: {
     //   lists: ListsResolver
     // }
