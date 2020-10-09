@@ -65,6 +65,10 @@ export class AppComponent {
     this.changeToDataChannel();
   }
 
+  async changeToDevelopmentChannel() {
+    await this.deploy.configure({channel: 'Development'});
+  }
+
   @HostListener('window:resize', ['$event'])
   private onResize(event) {
     this.screenSizeService.onResize(event.target.innerWidth);
