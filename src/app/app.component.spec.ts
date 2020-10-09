@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ScreenSizeService } from './services/screen-size.service';
 import { of } from 'rxjs';
+import { Deploy } from 'cordova-plugin-ionic/dist/ngx';
 
 describe('AppComponent', () => {
 
@@ -33,7 +34,8 @@ describe('AppComponent', () => {
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
-        { provide: Platform, useValue: platformSpy }
+        { provide: Platform, useValue: platformSpy },
+        Deploy
       ]}).compileComponents();
   }));
 

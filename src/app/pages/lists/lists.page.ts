@@ -23,15 +23,15 @@ export class ListsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.lists$ = this.listsService.entities$;
-    this.socketService.joinListsGroup(1);
-    this.socketService.getListsChanges().subscribe(list => {
-      this.listsService.updateOneInCache(list);
-    });
+    // this.lists$ = this.listsService.entities$;
+    // this.socketService.joinListsGroup(1);
+    // this.socketService.getListsChanges().subscribe(list => {
+    //   this.listsService.updateOneInCache(list);
+    // });
 
-    this.socketService.getListCreated().subscribe(list => {
-      this.listsService.addOneToCache(list);
-    });
+    // this.socketService.getListCreated().subscribe(list => {
+    //   this.listsService.addOneToCache(list);
+    // });
   }
 
 }
